@@ -18,11 +18,11 @@ export default () => {
     return x + y;
   }
 
-  function sumArray(numbers) {
+  function sumArray(numbers: number[]) {
     return numbers.reduce(add, 0);
   }
 
-  const someSum:string = sumArray(["3", "6", "9"]);
+  const someSum= sumArray([3, 6, 9]);
 
   console.log("[Exercise 3.1]", `3 + 6 + 9 === ${someSum}`);
 
@@ -53,13 +53,15 @@ export default () => {
   // Instructions:
   // • Add type annotations wherever possible
 
-  function computeScore(word) {
+  function computeScore(word: string) {
     const letters = word.toUpperCase().split("");
     return letters.reduce((accum, curr) => (accum += getPointsFor(curr)), 0);
   }
 
   function getPointsFor(letter: string) {
-    const lettersAndPoints = [
+
+    //pendiente con la tupla (valor, valor)
+    const lettersAndPoints:[string,number][] = [
       ["AEOIULNRST", 1],
       ["DG", 2],
       ["BCMP", 3],
@@ -85,7 +87,7 @@ export default () => {
   // • Add explicit parameter types and return types
   // • Add a default greeting: "hello"
 
-  function greet(greeting) {
+  function greet(greeting = ' hello') {
     return greeting.toUpperCase();
   }
 
@@ -99,13 +101,13 @@ export default () => {
   // • Add parameter type annotation
   // • Even though this function doesn't return, add an explicit return type
 
-  function layEggs(quantity, color) {
+  function layEggs(quantity: number, color: string) {
     console.log(
       `[Exercise 3.5] You just laid ${quantity} ${color} eggs. Good job!`
     );
   }
 
-  layEggs();
+  layEggs(2, 'red');
 
   // ======== Exercise 3.6 ========
   // Here we've initialized two variables with function types.
@@ -116,11 +118,11 @@ export default () => {
   let multiply: (val1: number, val2: number) => number;
   let capitalize: (val: string) => string;
 
-  multiply = function(value: string): string {
+  capitalize = function(value: string): string {
     return `${value.charAt(0).toUpperCase()}${value.slice(1)}`;
   };
 
-  capitalize = function(x: number, y: number): number {
+  multiply = function(x: number, y: number): number {
     return x * y;
   };
 
